@@ -23,9 +23,6 @@ TEST(Suite1, Test1) {
     EXPECT_EQ(d, n);
   }
   EXPECT_EQ(n, 8);
-
-  list.traversal(foo);
-  EXPECT_EQ(foo(0), N + 1);
 }
 
 int main(int argc, char **argv) {
