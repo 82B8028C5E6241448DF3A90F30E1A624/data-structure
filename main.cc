@@ -1,28 +1,20 @@
-#include <iostream>
-#include "SequentialList.h"
 #include "gtest/gtest.h"
-
-int foo(int value) {
-  static int i = 0;
-  i++;
-  return i;
-}
+#include "LinkList.h"
 
 TEST(Suite1, Test1) {
-  const int N = 8;
-  SequentialList<int> list;
-  int i;
-  for (i = 0; i < N; i++) {
+  LinkList<int> list;
+  const int N = 5;
+
+  for (int i = 0; i < N; i++) {
     list.insert(i + 1);
   }
-  EXPECT_EQ(list.insert(i + 1), false);
 
-  int n = 0;
+  int n = N;
   for (int d : list) {
-    n++;
     EXPECT_EQ(d, n);
+    n--;
   }
-  EXPECT_EQ(n, 8);
+  EXPECT_EQ(n, 0);
 }
 
 int main(int argc, char **argv) {
