@@ -1,16 +1,34 @@
+#include <iostream>
 #include "SequentialList.h"
+#include "gtest/gtest.h"
 
-int main() {
-  bool sign;
-  int count = 10;
-  SequentialList *list = new SequentialList(count);
+int foo(int value) {
+  static int i = 0;
+  i++;
+  return i;
+}
 
-  for (int i = 0; i < count; i++) {
-    sign = list->insert(i);
+TEST(Suite1, Test1) {
+  const int N = 8;
+  SequentialList<int> list;
+  int i;
+  for (i = 0; i < N; i++) {
+    list.insert(i + 1);
   }
+  EXPECT_EQ(list.insert(i + 1), false);
 
-  sign = list->insert(count);
-  list->traversal();
+  int n = 0;
+  for (int d : list) {
+    n++;
+    EXPECT_EQ(d, n);
+  }
+  EXPECT_EQ(n, 8);
 
-  return 0;
+  list.traversal(foo);
+  EXPECT_EQ(foo(0), N + 1);
+}
+
+int main(int argc, char **argv) {
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
 }
