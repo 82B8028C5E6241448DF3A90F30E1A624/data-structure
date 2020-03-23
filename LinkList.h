@@ -166,4 +166,6 @@ class LinkList {
     }
     return count;
   }
+  
+  int getSize() { return size; }
 };
