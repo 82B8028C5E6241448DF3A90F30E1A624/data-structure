@@ -10,7 +10,7 @@ class SequentialList : public List<T> {
   T* data;
 
  public:
-  SequentialList() : size(0), capacity(8), data(new T[8]) {}
+  SequentialList() : size(0), capacity(1024), data(new T[1024]) {}
 
   virtual ~SequentialList(){};
 

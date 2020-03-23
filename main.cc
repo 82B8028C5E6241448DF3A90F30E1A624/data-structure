@@ -1,18 +1,14 @@
 #include <iostream>
-#include "Stack.h"
+#include "Bracket.h"
 #include "gtest/gtest.h"
 
 TEST(Suite1, Test1) {
-  Stack<int> list;
-  EXPECT_EQ(list.isEmpty(), true);
-
-  const int N = 5;
-  for (int i = 0; i < N; i++) {
-    list.push(i + 1);
-  }
-  EXPECT_EQ(list.top(), 5);
-  list.pop();
-  EXPECT_EQ(list.top(), 4);
+  bool result1 = bracket("{ ( 8 + 2 ) * ( 3 + 5 ) * 2 }");
+  EXPECT_EQ(result1, true);
+  bool result2 = bracket("{ ( [8 + 2] ) * ( 3 + 5 ) * 2 }");
+  EXPECT_EQ(result2, true);
+  bool result3 = bracket("{ ( [8 + 2 ) * ( 3 + 5 ) * 2 }");
+  EXPECT_EQ(result3, false);
 }
 
 int main(int argc, char **argv) {
