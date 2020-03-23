@@ -1,26 +1,19 @@
 #include <iostream>
-#include "Queue.h"
+#include <string>
+#include "BinaryTree.h"
 #include "gtest/gtest.h"
 
 TEST(Suite1, Test1) {
-  Queue<int> queue;
-  bool empty = queue.isEmpty();
-  EXPECT_EQ(empty, true);
-
-  const int N = 5;
-  for (int i = 0; i < N; i++) {
-    queue.push(i + 1);
-  }
-
-  int front1 = queue.front();
-  EXPECT_EQ(front1, 5);
-  
-  queue.pop();
-  int front2 = queue.front();
-  EXPECT_EQ(front2, 4);
-
-  int back = queue.back();
-  EXPECT_EQ(back, 1);
+  extern std::string TraversalResult;
+  std::string str1 = "ABDCEGF";
+  std::string str2 = "BDAGECF";
+  Node *root = build(str1, str2);
+  preorder_traversal(root);
+  EXPECT_EQ(TraversalResult, "ABDCEGF");
+  inorder_traversal(root);
+  EXPECT_EQ(TraversalResult, "BDAGECF");
+  postorder_traversal(root);
+  EXPECT_EQ(TraversalResult, "DBGEFCA");
 }
 
 int main(int argc, char **argv) {
