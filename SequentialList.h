@@ -41,7 +41,7 @@ class SequentialList : public List<T> {
   }
 
   void insert(int index, T _data) {
-    if (size >= capacity ||  index > size|| index < 0) exit(1);
+    if (size >= capacity || index > size || index < 0) exit(1);
     for (int i = size; size != index; size--) {
       data[i] = data[i - 1];
     }
@@ -75,6 +75,8 @@ class SequentialList : public List<T> {
       if (data[index] == _data) count++;
     return count;
   }
+
+  int getSize() { return size; }
 
   class Iterator {
    private:
